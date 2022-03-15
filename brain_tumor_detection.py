@@ -1,5 +1,4 @@
 
-"""Brain tumor detection.ipynb"""
 import os
 import numpy as np # linear algebra
 import pandas as pd # data processing
@@ -11,12 +10,12 @@ from keras_preprocessing import image
 from keras_preprocessing.image import ImageDataGenerator
 
 import zipfile
-local_zip = '/content/Brain tumor.zip'
+local_zip = '/content/brain_tumor.zip'
 zip_ref = zipfile.ZipFile(local_zip, 'r')
 zip_ref.extractall('/content/data')
 zip_ref.close()
 
-base_dir = '/content/data/Brain tumor'
+base_dir = '/content/data/brain_tumor'
 training_dir = os.path.join(base_dir, 'Training')
 testing_dir = os.path.join(base_dir, 'Testing')
 pituitary_train = os.path.join(training_dir,'pituitary')
@@ -79,18 +78,18 @@ validation_generator = validation_datagen.flow_from_directory(VALIDATION_DIR,
                                                              class_mode = 'categorical',
                                                              color_mode = 'grayscale')
 
-"""### checking the parameters of the model"""
+# checking the parameters of the model
 
 model.summary()
 
-"""### compiling the model"""
+# compiling the model
 
 from tensorflow.keras.optimizers import Adam
 model.compile(optimizer = Adam(learning_rate = 0.001),
              loss = 'categorical_crossentropy',
               metrics = ['accuracy'])
 
-"""### training the  model"""
+# training the  model
 
 history = model.fit(train_generator,
                              steps_per_epoch = 5712//32,
