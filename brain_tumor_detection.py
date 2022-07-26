@@ -28,6 +28,8 @@ print('total training notumor images:', len(os.listdir(notumor_train)))
 print('total training meningioma images:', len(os.listdir(meningioma_train)))
 print('total training glioma images', len(os.listdir(glioma_train)))
 
+# creating a custom relu function
+
 model = tf.keras.Sequential([
     #first convolution layer
     tf.keras.layers.Conv2D(32,(3,3), activation = 'relu',input_shape = (64,64,1)),
